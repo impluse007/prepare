@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd 
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+    <bean id="student" class="com.learnspring.entity.Student">
+        <property name="id" value="1"></property>
+        <property name="name" value="张三"></property>
+        <property name="age" value="22"></property>
+        <property name="addresses">
+            <list>
+                <ref bean ="address"></ref>
+                <ref bean ="address2"></ref>
+            </list>
+        </property>
+
+    </bean>
+    <bean id="user" class="com.learnspring.entity.User">
+
+    </bean>
+    <bean id="student2" class = "com.learnspring.entity.Student" scope="singleton">
+        <constructor-arg name="id" value="3"></constructor-arg>
+        <constructor-arg name="name" value="ming"></constructor-arg>
+        <constructor-arg name="age" value ="22"></constructor-arg>
+        <constructor-arg name ="addresses" ref="address"></constructor-arg>
+    </bean>
+    <bean id="address" class="com.learnspring.entity.Address">
+        <property name="id" value="1"></property>
+        <property name="name" value="east"></property>
+    </bean>
+    <bean id = "address2" class="com.learnspring.entity.Address">
+        <property name="id" value ="2"></property>
+        <property name="name" value="west" ></property>
+    </bean>
+
+</beans>
